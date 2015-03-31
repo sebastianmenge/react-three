@@ -320,9 +320,13 @@ var THREEScene = createTHREEComponent(
 
       this._THREErenderer = new THREE.WebGLRenderer({
           canvas:renderelement,
-          antialias: props.antialias === undefined ? true : props.antialias
+          antialias: props.antialias === undefined ? true : props.antialias,
+          alpha: props.alpha !== undefined ? props.alpha : false,
+          precision: props.precision === undefined ? "lowp" : props.precision
       });
       this._THREErenderer.setSize(+props.width, +props.height);
+      if (props.pixelRatio !== undefined)
+        this._THREErenderer.setPixelRatio(props.pixelRatio);
       this._THREEraycaster = new THREE.Raycaster();
       this.setApprovedDOMProperties(props);
       this.applyTHREEObject3DProps({},this.props);
@@ -915,7 +919,7 @@ function createTHREEClass(spec) {
 }
 
 // gaaah
-React.createClass = createTHREEClass;
+// React.createClass = createTHREEClass;
 
 function dontUseReactTHREECreateClass(spec)
 {
