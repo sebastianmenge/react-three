@@ -919,7 +919,7 @@ function createTHREEClass(spec) {
 }
 
 // gaaah
-React.createClass = createTHREEClass;
+// React.createClass = createTHREEClass;
 
 function dontUseReactTHREECreateClass(spec)
 {
